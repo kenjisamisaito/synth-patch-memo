@@ -1,0 +1,36 @@
+{
+  "name": "synth_patch_memo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "android-run": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "16.2.0",
+    "react-native": "0.53.0",
+    "react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera",
+    "react-native-extended-stylesheet": "^0.8.1",
+    "react-native-fs": "^2.9.10",
+    "react-navigation": "^1.0.3",
+    "react-navigation-redux-helpers": "^1.0.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-storage": "^4.1.2",
+    "redux-storage-engine-reactnativeasyncstorage": "^1.0.5",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-jest": "22.2.2",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "22.2.2",
+    "react-test-renderer": "16.2.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
