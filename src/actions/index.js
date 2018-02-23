@@ -6,6 +6,8 @@ export const ADD_SYNTH = 'ADD_SYNTH';
 export const REMOVE_SYNTH = 'REMOVE_SYNTH';
 export const SELECT_SYNTH = 'SELECT_SYNTH';
 
+export const ADD_PATCH_TO_SYNTH = 'ADD_PATCH_TO_SYNTH';
+
 export const ADD_PATCH_IMAGE = 'ADD_PATCH_IMAGE';
 export const REMOVE_PATCH_IMAGE = 'REMOVE_PATCH_IMAGE';
 
@@ -16,19 +18,15 @@ export const SELECT_PATCH = 'SELECT_PATCH';
 
 export const ADD_IMAGE = 'ADD_IMAGES';
 
-// TODO: move index incrementation to reducer.
-let synthId = 9;
-
 export function addSynth(name, description) {
-    synthId += 1;
-
     return ({
         type: ADD_SYNTH,
         synth:
         {
-            id: synthId,
+            id: null,
             name,
             description,
+            patches: [],
         },
     });
 }
@@ -38,8 +36,31 @@ export const removeSynth = id => ({
     id,
 });
 
-export function addPatch(patchName) {
-    return {type: ADD_PATCH, patchName};
+export function savePatch(id, name, description) {
+    return ({
+        type: ADD_PATCH,
+        patch: {
+            id,
+            name,
+            description,
+            images: [],
+        },
+    });
+}
+
+export function addPatchToSynth(synthId, patchId) {
+    return ({
+        type: ADD_PATCH_TO_SYNTH,
+        synthId,
+        patchId,
+    });
+}
+
+export function addPatch(synthid, patchId, name, description) {
+    return function action(dispatch) {
+        dispatch(savePatch(patchId, name, description));
+        dispatch(addPatchToSynth(synthid, patchId));
+    };
 }
 
 export function removePatch(id) {

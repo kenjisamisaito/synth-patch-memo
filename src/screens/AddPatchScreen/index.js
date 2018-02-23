@@ -16,8 +16,8 @@ class AddPatchScreen extends React.PureComponent {
         };
     }
 
-    handleOnPress = (name, description) => {
-        this.props.onPress(name, description);
+    handleOnPress = (synthId, patchId, name, description) => {
+        this.props.onPress(synthId, patchId, name, description);
         this.props.navigation.goBack();
     }
 
@@ -42,14 +42,21 @@ class AddPatchScreen extends React.PureComponent {
                   underlineColorAndroid={colors.mainColor}
                   selectionColor={colors.mainColor}
                 />
-                <Button color={colors.mainColor} title="Save" onPress={() => this.handleOnPress(this.state.name, this.state.description)} />
+                <Button color={colors.mainColor} title="Save" onPress={() => this.handleOnPress(this.props.synthId, this.props.patchId, this.state.name, this.state.description)} />
             </View>
         );
     }
 }
 
+const mapStateToProps = state => ({
+    patchId: state.patches.index === null ? 0 : state.patches.index,
+    synthId: state.ui.selectedSynth,
+});
+
+
 const mapDispatchToProps = dispatch => ({
-    onPress: (name, description) => dispatch(addPatch(name, description)),
+    onPress: (synthId, patchId, name, description) =>
+        dispatch(addPatch(synthId, patchId, name, description)),
 });
 
 AddPatchScreen.propTypes = {
@@ -57,7 +64,9 @@ AddPatchScreen.propTypes = {
     navigation: PropTypes.shape({
         goBack: PropTypes.func.isRequired,
     }).isRequired,
+    synthId: PropTypes.number.isRequired,
+    patchId: PropTypes.number.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(AddPatchScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(AddPatchScreen);
 

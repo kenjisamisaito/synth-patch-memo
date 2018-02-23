@@ -1,7 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import {StackNavigator} from 'react-navigation';
-import store from './store';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import {store, persistor} from './store';
 
 
 import colors from './config/colors';
@@ -10,6 +12,7 @@ import PatchesScreen from './screens/PatchesScreen';
 import AddSynthScreen from './screens/AddSynthScreen';
 import PatchScreen from './screens/PatchScreen';
 import AddPictureScreen from './screens/AddPictureScreen';
+import AddPatchScreen from './screens/AddPatchScreen';
 
 const RootNavigator = StackNavigator(
     {
@@ -29,6 +32,12 @@ const RootNavigator = StackNavigator(
             screen: PatchesScreen,
             navigationOptions: {
                 title: 'Patches',
+            },
+        },
+        AddPatch: {
+            screen: AddPatchScreen,
+            navigationOptions: {
+                title: 'Add patch',
             },
         },
         Patch: {
@@ -56,7 +65,9 @@ const RootNavigator = StackNavigator(
 
 const App = () => (
     <Provider store={store}>
-        <RootNavigator />
+        <PersistGate loading={null} persistor={persistor}>
+            <RootNavigator />
+        </PersistGate>
     </Provider>
 );
 

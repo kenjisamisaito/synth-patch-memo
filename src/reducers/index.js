@@ -7,11 +7,11 @@ import ui from './ui';
 // This is the place to combine all the reducers of
 // all the screens.
 
-const reducers = combineReducers({
+const mainReducer = combineReducers({
     synths,
     patches,
     ui,
 });
 
 
-export default reducers;
+export default mainReducer;

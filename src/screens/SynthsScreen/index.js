@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import { selectSynth } from '../../actions';
 
 const mapStateToProps = state => ({
-    synths: state.synths,
+    synths: state.synths.list,
 });
 
 const mapDispatchToProps = dispatch => ({

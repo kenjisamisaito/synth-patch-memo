@@ -7,12 +7,16 @@ import PatchList from './components/PatchList';
 import Footer from '../../components/Footer';
 import { selectPatch } from '../../actions';
 
-const getPatchesForTheSelectedSynth = (patchIds, patches) =>
-    patches.filter(p => patchIds.includes(p.id));
+const getPatchesForTheSelectedSynth = (patchIds, patches) => {
+    if (patchIds !== undefined && patches !== undefined) {
+        return patches.filter(p => patchIds.includes(p.id));
+    }
+    return [];
+};
 
 const mapStateToProps = state => ({
-    patches: getPatchesForTheSelectedSynth(state.synths.find(s =>
-        s.id === state.ui.selectedSynth).patches, state.patches),
+    patches: getPatchesForTheSelectedSynth(state.synths.list.find(s =>
+        s.id === state.ui.selectedSynth).patches, state.patches.list),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -28,8 +32,8 @@ const PatchesScreen = props => (
         />
         <Footer
           navigation={props.navigation}
-          buttonTitle="New Patch"
-          buttonNavigation="NewPatch"
+          buttonTitle="Add patch"
+          buttonNavigation="AddPatch"
         />
     </View>
 );

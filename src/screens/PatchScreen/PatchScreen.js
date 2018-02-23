@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 
 
 const mapStateToProps = state => ({
-    patch: state.patches.find(p => p.id === state.ui.selectedPatch),
+    patch: state.patches.list.find(p => p.id === state.ui.selectedPatch),
 });
 
 
