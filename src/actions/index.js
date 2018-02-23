@@ -33,7 +33,7 @@ export function addSynth(name, description) {
 
 export const removeSynth = id => ({
     type: REMOVE_SYNTH,
-    id,
+    id,     
 });
 
 export function savePatch(id, name, description) {
