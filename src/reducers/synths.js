@@ -1,6 +1,16 @@
 
 import { ADD_SYNTH, ADD_PATCH_TO_SYNTH, REMOVE_SYNTH } from '../actions';
 
+
+/* Synth object example:
+    {
+        id: 1,
+        name: 'Roland SH101',
+        description: 'Bad ass bass machine',
+        patches: [1, 2, 3],
+    },
+*/
+
 function synths(state = {index: 0, list: []}, action) {
     switch (action.type) {
         // addSynth(name, description)
