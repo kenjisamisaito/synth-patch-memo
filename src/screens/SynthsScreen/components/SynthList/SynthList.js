@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {FlatList} from 'react-native';
-import SynthListItem from '../SynthListItem';
+import ListItem from '../../../../components/ListItem';
 import ListSeparator from '../../../../components/ListSeparator';
 
 // SynthList contains all the synths.
@@ -17,8 +17,7 @@ class SynthList extends React.PureComponent {
             <FlatList
               data={this.props.synths}
               renderItem={({item}) => (
-                  <SynthListItem
-                    id={item.id}
+                  <ListItem
                     name={item.name}
                     description={item.description}
                     onPressItem={() => this.handleOnPress(item.id)}
