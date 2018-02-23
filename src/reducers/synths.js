@@ -30,16 +30,22 @@ function synths(state = {index: 0, list: []}, action) {
         }
         // addPatchToSynth(synthId, patchId)
         case ADD_PATCH_TO_SYNTH: {
-            // Add synthId to the list of patches for the specified synth.
             const synthList = state.list.map(synth => (
                 synth.id === action.synthId ?
                     {...synth, patches: synth.patches.concat(action.patchId)} : synth
                 ));
             return {...state, list: synthList};
         }
-        case REMOVE_SYNTH:
-            // Filters the synth to be removed from the array of synths.
-            return state.synths.filter(synth => synth.id !== action.id);
+        // removeSynth(id)
+        case REMOVE_SYNTH: {
+            const newList = state.list.filter(synth => synth.id !== action.id);
+            if (newList) {
+                return {...state, list: newList};
+            }
+
+            return {...state, list: []};
+        }
+
         default:
             return state;
     }
