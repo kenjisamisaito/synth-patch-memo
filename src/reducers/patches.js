@@ -29,16 +29,6 @@ import { ADD_PATCH, REMOVE_PATCH, ADD_IMAGE } from '../actions';
 function patches(state = {index: 0}, action) {
     switch (action.type) {
         case ADD_PATCH: {
-/*             // Set id
-            let index = 0;
-            if (state.index !== undefined) {
-                index = state.index + 1;
-            }
-
-            const {patch} = action;
-            patch.id = index;
- */
-
             if (state.list !== undefined) {
                 return {...state, list: state.list.concat(action.patch), index: state.index + 1};
             }
