@@ -7,8 +7,10 @@ import styles from './styles';
 const ListItem = props => (
     <TouchableOpacity onPress={props.onPressItem}>
         <View style={styles.container}>
-            <Text style={styles.name}>{props.name}</Text>
-            <Text style={styles.description}>{props.description}</Text>
+            <View style={styles.innerContainer}>
+                <Text style={styles.name}>{props.name}</Text>
+                <Text style={styles.description}>{props.description}</Text>
+            </View>
         </View>
     </TouchableOpacity>
 );
