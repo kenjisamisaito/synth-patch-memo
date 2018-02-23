@@ -5,6 +5,7 @@ const colors = {
     mainColor: '#0275d8',
     textColorLight: 'white',
     textColorDark: 'grey',
+    listBackground: '#f2f2f2',
 };
 
 export default colors;

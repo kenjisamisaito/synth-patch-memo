@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flexDirection: 'column',
-        padding: 20,
+        padding: 15,
         // borderWidth: 1,
         // borderColor: colors.mainColor,
     },
