@@ -5,17 +5,12 @@ import RNFS from 'react-native-fs';
 export const ADD_SYNTH = 'ADD_SYNTH';
 export const REMOVE_SYNTH = 'REMOVE_SYNTH';
 export const SELECT_SYNTH = 'SELECT_SYNTH';
-
 export const ADD_PATCH_TO_SYNTH = 'ADD_PATCH_TO_SYNTH';
-
 export const ADD_PATCH_IMAGE = 'ADD_PATCH_IMAGE';
 export const REMOVE_PATCH_IMAGE = 'REMOVE_PATCH_IMAGE';
-
 export const ADD_PATCH = 'ADD_PATCH';
 export const REMOVE_PATCH = 'REMOVE_PATCH';
-
 export const SELECT_PATCH = 'SELECT_PATCH';
-
 export const ADD_IMAGE = 'ADD_IMAGES';
 
 export function addSynth(name, description) {
@@ -33,7 +28,7 @@ export function addSynth(name, description) {
 
 export const removeSynth = id => ({
     type: REMOVE_SYNTH,
-    id,     
+    id,
 });
 
 export function savePatch(id, name, description) {
