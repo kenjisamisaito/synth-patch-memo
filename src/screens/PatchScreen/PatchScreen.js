@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, Image, FlatList} from 'react-native';
+import FitImage from 'react-native-fit-image';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -14,18 +15,32 @@ const mapStateToProps = state => ({
 const PatchScreen = props => (
     <View style={styles.container}>
         <View style={styles.container}>
-            <Text style={styles.label}>Patch:</Text>
-            <Text style={styles.text}>{props.patch.name}</Text>
-            <Text style={styles.label}>Description:</Text>
-            <Text style={styles.text}>{props.patch.description}</Text>
-            <Text style={styles.label}>Images:</Text>
+
             <FlatList
+              style={styles.list}
               data={props.patch.images}
-              renderItem={({item}) => (<Image source={{uri: item, isStatic: true}} style={styles.image} resizeMode="cover" />)}
               keyExtractor={item => item.toString()}
-              removeClippedSubviews={true}
+              renderItem={({item}) => (
+                  <View style={styles.imageContainer}>
+                      <FitImage
+                        style={styles.image}
+                        source={{uri: item, isStatic: true}}
+                      />
+                  </View>
+              )}
+              ListHeaderComponent={() => (
+                  <View style={styles.header}>
+                      <Text style={styles.text}>
+                          <Text style={styles.name}>{props.patch.name}</Text>
+                          <Text> </Text>
+                          {props.patch.description}
+                      </Text>
+                  </View>
+              )}
+              ListFooterComponent={() => (<View style={{height: 10}} />)}
             />
         </View>
+
         <Footer navigation={props.navigation} buttonTitle="Add picture" buttonNavigation="AddPicture" />
     </View>
 );
