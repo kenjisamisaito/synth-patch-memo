@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, FlatList} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 import FitImage from 'react-native-fit-image';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -31,8 +31,7 @@ const PatchScreen = props => (
               ListHeaderComponent={() => (
                   <View style={styles.header}>
                       <Text style={styles.text}>
-                          <Text style={styles.name}>{props.patch.name}</Text>
-                          <Text> </Text>
+                          <Text style={styles.name}>{props.patch.name} </Text>
                           {props.patch.description}
                       </Text>
                   </View>
