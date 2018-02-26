@@ -26,6 +26,7 @@ export function addSynth(name, description) {
     });
 }
 
+// TODO: Remove all the patches!!!
 export const removeSynth = id => ({
     type: REMOVE_SYNTH,
     id,
@@ -59,6 +60,7 @@ export function addPatch(synthid, patchId, name, description) {
 }
 
 export function removePatch(id) {
+    // TODO: Remove all the images!!!
     return {type: REMOVE_PATCH, id};
 }
 
