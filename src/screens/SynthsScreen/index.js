@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onSelect: id => dispatch(selectSynth(id)),
-    onDeleteItem: id => dispatch(removeSynth(id)),
+    onDeleteItem: item => dispatch(removeSynth(item)),
 });
 
 const SynthsScreen = props => (

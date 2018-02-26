@@ -27,9 +27,9 @@ export function addSynth(name, description) {
 }
 
 // TODO: Remove all the patches!!!
-export const removeSynth = id => ({
+export const removeSynth = item => ({
     type: REMOVE_SYNTH,
-    id,
+    id: item.id,
 });
 
 export function savePatch(id, name, description) {
@@ -59,9 +59,21 @@ export function addPatch(synthid, patchId, name, description) {
     };
 }
 
-export function removePatch(id) {
+export function removePatch(patch) {
+    // Delete images.
+    patch.images.forEach((image) => {
+        RNFS.unlink(image)
+        .then(() => {
+            console.log('FILE DELETED');
+        })
+        // `unlink` will throw an error, if the item to unlink does not exist
+        .catch((err) => {
+            console.log(err.message);
+        });
+    });
+
     // TODO: Remove all the images!!!
-    return {type: REMOVE_PATCH, id};
+    return {type: REMOVE_PATCH, id: patch.id};
 }
 
 export function selectSynth(id) {
@@ -89,4 +101,3 @@ export function saveImage(id, image) {
         );
     };
 }
-
