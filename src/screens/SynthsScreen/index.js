@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import SwipeList from '../../components/SwipeList';
-import Footer from './components/Footer';
+import Footer from '../../components/Footer';
 import { selectSynth, removeSynth } from '../../actions';
 
 const mapStateToProps = state => ({
@@ -25,7 +25,11 @@ const SynthsScreen = props => (
           onDeleteItem={props.onDeleteItem}
           onSelectNavigationRoute="Patches"
         />
-        <Footer navigation={props.navigation} />
+        <Footer
+          navigation={props.navigation}
+          buttonTitle="Add synth"
+          buttonNavigation="AddSynth"
+        />
     </View>
 );
 

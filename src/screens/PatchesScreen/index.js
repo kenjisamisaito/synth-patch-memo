@@ -3,9 +3,9 @@ import {View} from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import PatchList from './components/PatchList';
+import SwipeList from '../../components/SwipeList';
 import Footer from '../../components/Footer';
-import { selectPatch } from '../../actions';
+import { selectPatch, removePatch } from '../../actions';
 
 const getPatchesForTheSelectedSynth = (patchIds, patches) => {
     if (patchIds !== undefined && patches !== undefined) {
@@ -20,16 +20,20 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onSelectPatch: patch => dispatch(selectPatch(patch)),
+    onSelect: id => dispatch(selectPatch(id)),
+    onDeleteItem: id => dispatch(removePatch(id)),
 });
 
 const PatchesScreen = props => (
     <View style={styles.container}>
-        <PatchList
-          patches={props.patches}
+        <SwipeList
+          items={props.patches}
           navigation={props.navigation}
-          onSelectPatch={props.onSelectPatch}
+          onSelect={props.onSelect}
+          onDeleteItem={props.onDeleteItem}
+          onSelectNavigationRoute="Patch"
         />
+
         <Footer
           navigation={props.navigation}
           buttonTitle="Add patch"
@@ -43,7 +47,8 @@ PatchesScreen.propTypes = {
         navigate: PropTypes.func.isRequired,
     }).isRequired,
     patches: PropTypes.arrayOf(PropTypes.object).isRequired,
-    onSelectPatch: PropTypes.func.isRequired,
+    onSelect: PropTypes.func.isRequired,
+    onDeleteItem: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PatchesScreen);
