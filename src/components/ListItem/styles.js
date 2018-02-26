@@ -24,7 +24,7 @@ export default StyleSheet.create({
     name: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginRight: 10,
+        marginRight: 1,
     },
     description: {
         fontSize: 15,
