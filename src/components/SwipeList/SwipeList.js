@@ -39,7 +39,7 @@ class SwipeList extends React.Component {
             onClose: (sectionId, rowId, direction) => this.onSwipeClose(item, rowId, direction),
             onOpen: () => this.onSwipeOpen(item),
             right: [{
-                    onPress: () => this.props.onDeleteItem(item.id),
+                    onPress: () => this.props.onDeleteItem(item),
                     text: 'Delete',
                     backgroundColor: '#ff0000',
                 },
