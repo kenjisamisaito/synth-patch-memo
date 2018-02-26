@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import SwipeList from './components/SwipeList';
+import SwipeList from '../../components/SwipeList';
 import Footer from './components/Footer';
 import { selectSynth, removeSynth } from '../../actions';
 

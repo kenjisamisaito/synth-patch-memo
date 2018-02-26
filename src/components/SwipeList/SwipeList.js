@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {View, FlatList} from 'react-native';
 import Swipeout from 'react-native-swipeout';
-import ListItem from '../../../../components/ListItem';
-import ListSeparator from '../../../../components/ListSeparator';
+import ListItem from '../ListItem';
+import ListSeparator from '../ListSeparator';
 import styles from './styles';
 
-// SynthList contains all the synths.
 class SwipeList extends React.Component {
     constructor(props) {
         super(props);
