@@ -35,8 +35,7 @@ function patches(state = {index: 0}, action) {
             return {...state, list: [action.patch], index: state.index + 1 };
         }
         case REMOVE_PATCH:
-            return state.list.filter(patch => patch.id !== action.id);
-
+            return {...state, list: state.list.filter(patch => patch.id !== action.id)};
         case ADD_IMAGE:
             return {...state, list: updateImagesInArray(state.list, action)};
         default:

@@ -21,7 +21,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onSelect: id => dispatch(selectPatch(id)),
-    onDeleteItem: id => dispatch(removePatch(id)),
+    onDeleteItem: item => dispatch(removePatch(item)),
 });
 
 const PatchesScreen = props => (
