@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import SynthList from './components/SynthList';
+import SwipeList from './components/SwipeList';
 import Footer from './components/Footer';
 import { selectSynth, removeSynth } from '../../actions';
 
@@ -12,17 +12,18 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onSelectSynth: id => dispatch(selectSynth(id)),
+    onSelect: id => dispatch(selectSynth(id)),
     onDeleteItem: id => dispatch(removeSynth(id)),
 });
 
 const SynthsScreen = props => (
     <View style={styles.container}>
-        <SynthList
-          synths={props.synths}
+        <SwipeList
+          items={props.synths}
           navigation={props.navigation}
-          onSelectSynth={props.onSelectSynth}
+          onSelect={props.onSelect}
           onDeleteItem={props.onDeleteItem}
+          onSelectNavigationRoute="Patches"
         />
         <Footer navigation={props.navigation} />
     </View>
@@ -33,7 +34,7 @@ SynthsScreen.propTypes = {
         navigate: PropTypes.func.isRequired,
     }).isRequired,
     synths: PropTypes.arrayOf(PropTypes.object).isRequired,
-    onSelectSynth: PropTypes.func.isRequired,
+    onSelect: PropTypes.func.isRequired,
     onDeleteItem: PropTypes.func.isRequired,
 };
 
